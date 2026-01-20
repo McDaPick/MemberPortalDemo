@@ -29,7 +29,7 @@ const Header = ({ onOpenAi }) => {
 
               <div className="profile-section">
                 <div className="text-right hidden sm:block">
-                  <p className="text-sm font-semibold text-gray-900">Michael S.</p>
+                  <p className="text-sm font-semibold text-gray-900">Michael N.</p>
                   <p className="status-dot">Group Member</p>
                 </div>
                 <div className="user-avatar">

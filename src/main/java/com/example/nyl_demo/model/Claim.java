@@ -17,7 +17,7 @@ public class Claim {
     @Column(name = "SERVICE_DATE", nullable = false)
     private LocalDate serviceDate;
 
-    @Column(name = "DESCRIPTION")
+    @Column(name = "DESCRIPTION, length = 2000")
     private String description;
 
     @Column(name = "AMOUNT")
@@ -25,6 +25,12 @@ public class Claim {
 
     @Column(name = "STATUS")
     private String status;
+
+    @Column(name = "AI_SUMMARY, length = 1000")
+    private String aiSummary;
+
+    @Column(name = "RISK_LEVEL")
+    private String riskLevel;
 
     // --- Constructors ---
 
@@ -57,4 +63,20 @@ public class Claim {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public void setAiSummary(String aiSummary) {
+        this.aiSummary = aiSummary;
+    }
+
+    public String getAiSummary() {
+        return aiSummary;
+    }
+
+    public void setRiskLevel(String riskLevel) {
+        this.riskLevel = riskLevel;
+    }
+
+    public String getRiskLevel() {
+        return riskLevel;
+    }
 }

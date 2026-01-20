@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
                 <ShieldCheck className="h-6 w-6 text-blue-700" />
-                <span className="text-lg font-bold text-gray-900">NYL GMAD</span>
+                <span className="text-lg font-bold text-gray-900">Member Portal</span>
               </div>
               <p className="text-gray-500 text-sm">
                 Secure Group Membership and Association Direct portal.
@@ -54,7 +54,7 @@ const Footer = () => {
           {/* Bottom Bar */}
           <div className="footer-bottom-bar">
             <p className="text-gray-400 text-xs">
-              © 2026 New York Life Insurance Company. All rights reserved.
+              © 2026 Michael Nielsen Insurance Company. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Github className="social-icon" />

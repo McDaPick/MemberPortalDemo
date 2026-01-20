@@ -13,6 +13,15 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+    const onRefresh = async () => {
+        try {
+            const response = await axios.get('http://localhost:8080/api/claims');
+            setClaims(response.data); // This refreshes the whole table
+        } catch (error) {
+            console.error("Refresh failed:", error);
+        }
+    };
+
   useEffect(() => {
       // This function runs once when the component mounts
       const fetchClaims = async () => {
@@ -52,7 +61,7 @@ function App() {
                 )}
 
                 {!loading && !error && (
-                    <ClaimsTable claims={claims} />
+                    <ClaimsTable claims={claims} onRefresh={onRefresh}/>
                 )}
 
             </div>

@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Oracle Database
+  oracle-db:
+    image: gvenzl/oracle-free
+    container_name: oracle-db
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PASSWORD=oracle
+      - APP_USER=claims_user
+      - APP_USER_PASSWORD=claims_password
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - ./init-db:/container-entrypoint-initdb.d
+
+  # LocalStack (S3 Simulation)
+  localstack:
+    image: localstack/localstack
+    container_name: localstack_s3
+    ports:
+      - "4566:4566"            # LocalStack Edge Proxy
+    environment:
+      - SERVICES=s3            # Only spin up S3
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "./localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  # Spring Boot Backend (Current Directory)
+  backend-api:
+    build: .
+    container_name: spring-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - oracle-db
+      - localstack
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@oracle-db:1521:FREE
+      - AWS_ENDPOINT=http://localstack:4566
+
+  # React Frontend (Sub-directory)
+  frontend-ui:
+    build: ./frontend
+    container_name: react-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend-api
+
+volumes:
+  oracle_data:

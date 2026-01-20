@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore the properties file
+src/main/resources/application.properties
+
+# If using IntelliJ or VS Code
+.idea/
+*.class
