@@ -1,0 +1,67 @@
+@reference "tailwindcss";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+@layer components {
+  /* The main page wrapper that pushes the footer to the bottom */
+  .app-shell {
+    @apply flex flex-col min-h-screen bg-gray-50;
+  }
+
+  /* The main content area with top padding for the fixed header */
+  .main-content {
+    @apply flex-grow pt-24 pb-12 px-4 max-w-7xl mx-auto w-full;
+  }
+
+  /* Loading State */
+  .loading-text {
+    @apply text-blue-600 animate-pulse font-medium flex items-center gap-2;
+  }
+
+  /* Error State Alert */
+  .error-alert {
+    @apply bg-red-50 text-red-700 p-4 rounded-lg mb-4 border border-red-200 shadow-sm;
+  }
+
+  /* Layout Grid for sections */
+  .content-grid {
+    @apply grid grid-cols-1 gap-8;
+  }
+}

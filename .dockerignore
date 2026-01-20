@@ -1,0 +1,26 @@
+# Ignore Java/Maven build artifacts
+target/
+*.jar
+.mvn/
+mvnw
+mvnw.cmd
+
+# Ignore IDE settings
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Ignore local logs
+*.log
+
+# CRITICAL: Ignore the frontend folder's local node_modules
+# The Dockerfile will run 'npm install' inside the container instead
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# OS files
+.DS_Store
